@@ -61,10 +61,11 @@
     <div class="container-fluid">
         <div>
             <h2>Manage Users</h2>
+            <a th:href="@{/users/new}">Create New User</a>
         </div>
 
         <div>
-            <table class="table table-bordered table-striped table-hover table-responsive">
+            <table class="table table-bordered table-striped table-hover table-responsive-xl">
                 <thead class="thead-dark">
                     <tr>
                         <th>User ID</th>
@@ -77,20 +78,21 @@
                         <th></th>
                     </tr>
                 </thead>
+                <tbody>
+                    <tr th:each="user : ${listUsers}">
+                        <td class="text-center">[[${user.id}]]</td>
+                        <td></td>
+                        <td>[[${user.email}]]</td>
+                        <td>[[${user.firstName}]]</td>
+                        <td>[[${user.lastName}]]</td>
+                        <td>[[${user.roles}]]</td>
+                        <td>[[${user.enabled}]]</td>
+                        <td>
+                            Edit &nbsp; Delete
+                        </td>
+                    </tr>
+                </tbody>
             </table>
-            <tbody>
-                <tr th:each="user : ${listUsers}">
-                    <td>[[${user.id}]]</td>
-                    <td></td>
-                    <td>[[${user.firstName}]]</td>
-                    <td>[[${user.lastName}]]</td>
-                    <td>[[${user.roles}]]</td>
-                    <td>[[${user.enabled}]]</td>
-                    <td>
-                        Edit &nbsp; Delete
-                    </td>
-                </tr>
-            </tbody>
         </div>
 
         <div class="text-center">
